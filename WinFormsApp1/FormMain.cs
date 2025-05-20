@@ -75,7 +75,25 @@ namespace WinFormsApp1
 
         private void 新增產品ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Form9 frm = new Form9();
+            frm.Show();
+        }
 
+        private void 新增產品種類ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form11 frm = new Form11();
+            frm.Show();
+        }
+
+        private void 新增供應商ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form12 frm = new Form12();
+            frm.Show();
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            //test1231232ttttttestt
         }
     }
 }

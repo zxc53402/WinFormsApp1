@@ -43,6 +43,8 @@
             this.作業二ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.產品下單ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新增產品ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新增產品種類ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.新增供應商ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -56,7 +58,7 @@
             this.作業二ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(800, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -68,7 +70,7 @@
             this.修改練習ToolStripMenuItem,
             this.刪除練習ToolStripMenuItem});
             this.練習一ToolStripMenuItem.Name = "練習一ToolStripMenuItem";
-            this.練習一ToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.練習一ToolStripMenuItem.Size = new System.Drawing.Size(68, 23);
             this.練習一ToolStripMenuItem.Text = "練習一";
             // 
             // 查詢練習ToolStripMenuItem
@@ -107,7 +109,7 @@
             this.修改練習ToolStripMenuItem1,
             this.刪除練習ToolStripMenuItem1});
             this.作業ToolStripMenuItem.Name = "作業ToolStripMenuItem";
-            this.作業ToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.作業ToolStripMenuItem.Size = new System.Drawing.Size(68, 23);
             this.作業ToolStripMenuItem.Text = "作業一";
             // 
             // 查詢練習ToolStripMenuItem1
@@ -142,24 +144,40 @@
             // 
             this.作業二ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.產品下單ToolStripMenuItem,
-            this.新增產品ToolStripMenuItem});
+            this.新增產品ToolStripMenuItem,
+            this.新增產品種類ToolStripMenuItem,
+            this.新增供應商ToolStripMenuItem});
             this.作業二ToolStripMenuItem.Name = "作業二ToolStripMenuItem";
-            this.作業二ToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.作業二ToolStripMenuItem.Size = new System.Drawing.Size(68, 23);
             this.作業二ToolStripMenuItem.Text = "作業二";
             // 
             // 產品下單ToolStripMenuItem
             // 
             this.產品下單ToolStripMenuItem.Name = "產品下單ToolStripMenuItem";
-            this.產品下單ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.產品下單ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.產品下單ToolStripMenuItem.Text = "產品下單";
             this.產品下單ToolStripMenuItem.Click += new System.EventHandler(this.產品下單ToolStripMenuItem_Click);
             // 
             // 新增產品ToolStripMenuItem
             // 
             this.新增產品ToolStripMenuItem.Name = "新增產品ToolStripMenuItem";
-            this.新增產品ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.新增產品ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
             this.新增產品ToolStripMenuItem.Text = "新增產品";
             this.新增產品ToolStripMenuItem.Click += new System.EventHandler(this.新增產品ToolStripMenuItem_Click);
+            // 
+            // 新增產品種類ToolStripMenuItem
+            // 
+            this.新增產品種類ToolStripMenuItem.Name = "新增產品種類ToolStripMenuItem";
+            this.新增產品種類ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.新增產品種類ToolStripMenuItem.Text = "新增產品種類";
+            this.新增產品種類ToolStripMenuItem.Click += new System.EventHandler(this.新增產品種類ToolStripMenuItem_Click);
+            // 
+            // 新增供應商ToolStripMenuItem
+            // 
+            this.新增供應商ToolStripMenuItem.Name = "新增供應商ToolStripMenuItem";
+            this.新增供應商ToolStripMenuItem.Size = new System.Drawing.Size(182, 26);
+            this.新增供應商ToolStripMenuItem.Text = "新增供應商";
+            this.新增供應商ToolStripMenuItem.Click += new System.EventHandler(this.新增供應商ToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -176,6 +194,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FormMain";
             this.Text = "FormMain";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -200,5 +219,7 @@
         private ToolStripMenuItem 作業二ToolStripMenuItem;
         private ToolStripMenuItem 產品下單ToolStripMenuItem;
         private ToolStripMenuItem 新增產品ToolStripMenuItem;
+        private ToolStripMenuItem 新增產品種類ToolStripMenuItem;
+        private ToolStripMenuItem 新增供應商ToolStripMenuItem;
     }
 }
