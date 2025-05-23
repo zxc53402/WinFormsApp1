@@ -20,26 +20,40 @@ namespace WinFormsApp1
 
         private void 訂單ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             createorders frm = new createorders();
-            frm.ShowDialog();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();            
         }
 
         private void 產品資訊ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             ProductForm frm = new ProductForm();
-            frm.ShowDialog();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();            
         }
 
         private void 訂單明細ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             orders frm = new orders();
-            frm.ShowDialog();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();           
         }
 
         private void 供應商資訊ToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            this.Hide();
             Suppliers frm = new Suppliers();
-            frm.ShowDialog();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+           
         }
     }
 }

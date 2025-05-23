@@ -18,6 +18,7 @@ namespace WinFormsApp1.初次練習
     {
         List<Category> category;
         List<Products> products;
+        List<Suppliers1> suppliers;
         public ProductForm()
         {
             InitializeComponent();
@@ -26,18 +27,18 @@ namespace WinFormsApp1.初次練習
         private void Form14_Load(object sender, EventArgs e)
         {
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");            
-            var results = con.Query<Category>("select CategoryID,CategoryName,Description from Categories").ToList();
+            var results = con.Query<Category>("select CategoryID,CategoryName from Categories").ToList();
+            var results4 = con.Query<Suppliers1>("select distinct SupplierID,CompanyName from Suppliers").ToList();
             category = results;
-            string categoryID;
-            string categoryName;
-            foreach (var item in category)
-            {
-                categoryID = item.CategoryID ?? "";
-                categoryName = item.CategoryName ?? "";                    
-            }
+            suppliers = results4;
+            category.Insert(0, new Category { CategoryID = "0", CategoryName = "" });
+            suppliers.Insert(0, new Suppliers1 { SupplierID = "0", CompanyName = "" });
             comboBox1.DataSource = category.ToList(); 
             comboBox1.DisplayMember = "CategoryName"; 
-            comboBox1.ValueMember = "CategoryID";            
+            comboBox1.ValueMember = "CategoryID";
+            comboBox2.DataSource = suppliers.ToList();
+            comboBox2.DisplayMember = "CompanyName";
+            comboBox2.ValueMember = "SupplierID";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -49,18 +50,42 @@ namespace WinFormsApp1.初次練習
         {
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             string selectedID = comboBox1.SelectedValue.ToString();
-            var results2 =con.Query<Products>("SELECT " +
-                "a.ProductID," +
-                "a.ProductName," +
-                "b.CompanyName AS SupplierName," +
-                "a.QuantityPerUnit," +
-                "a.UnitPrice,a.UnitsInStock," +
-                "a.ReorderLevel," +
-                "a.Discontinued " +
-                "FROM Products a left join Suppliers b on a.SupplierID = b.SupplierID " +
-                "where a.CategoryID = '"+ selectedID + "'").ToList();
-            products = results2;
-            dataGridView1.DataSource = products;          
+            string selectedID2 = comboBox2.SelectedValue.ToString();
+            var sql = "SELECT " +
+                    "a.ProductID," +
+                    "a.ProductName," +
+                    "b.CompanyName AS SupplierName," +
+                    "a.QuantityPerUnit," +
+                    "a.UnitPrice,a.UnitsInStock," +
+                    "a.ReorderLevel," +
+                    "a.Discontinued " +
+                    "FROM Products a left join Suppliers b on a.SupplierID = b.SupplierID";
+                   
+            var sqlW = " where";
+            var sqland = " and";
+            var sql1 = " a.CategoryID = @Category";
+            var sql2 = " a.SupplierID = @Supplier";
+           
+            if (selectedID != "0" && selectedID2 == "0")
+            {
+                var results2 = con.Query<Products>(sql+sqlW+sql1, new { Category = selectedID }).ToList();
+                products = results2;
+            }
+            if(selectedID=="0"&& selectedID2 != "0")
+            {
+                var results2 = con.Query<Products>(sql+sqlW+sql2, new { Supplier = selectedID2 }).ToList();
+                products = results2;
+            }
+            if(selectedID != "0" && selectedID2 != "0")
+            {
+                var results2 = con.Query<Products>(sql + sqlW +sql1+sqland+ sql2, new { Category = selectedID, Supplier = selectedID2 }).ToList();
+                products = results2;
+            }
+            if(selectedID == "0" && selectedID2 == "0")
+            {
+                MessageBox.Show("請選擇產品種類或供應商");
+            }            
+            dataGridView1.DataSource = products;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -69,10 +94,10 @@ namespace WinFormsApp1.初次練習
             {
                 var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
                 // 可先詢問是否刪除
-                var result = MessageBox.Show("是否確定刪除這一列？", "確認刪除", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-                if (result == DialogResult.Yes)
+                var result3 = MessageBox.Show("是否確定刪除這一列？", "確認刪除", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result3 == DialogResult.Yes)
                 {
-                    if (result == DialogResult.Yes)
+                    if (result3 == DialogResult.Yes)
                     {
                         // 取得目前這列的資料對象
                         var pd1 = (Products)dataGridView1.Rows[e.RowIndex].DataBoundItem;
@@ -82,7 +107,8 @@ namespace WinFormsApp1.初次練習
                         var pd2 = pd1.ProductID;
                         if(products.Count > 0)
                         {
-                            var results3 = con.Execute("delete from Products where ProductID = '" + pd2 + "'");
+                            var results3 = con.Execute("delete from Products where ProductID = @product",
+                                new { product = pd2 });
                             MessageBox.Show("成功刪除 " + results3 + "項資料");
                         }
                        

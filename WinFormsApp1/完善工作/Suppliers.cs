@@ -37,6 +37,10 @@ namespace WinFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             createsuppliers frm = new createsuppliers();
+            frm.FormClosed += (s, args) =>
+            {
+                Suppliers_Load(this, EventArgs.Empty);
+            };
             frm.ShowDialog();
         }
     }

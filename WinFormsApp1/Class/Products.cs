@@ -21,8 +21,7 @@ namespace WinFormsApp1.Class
     internal class Category
     {
         public string? CategoryID { get; set;}
-        public string? CategoryName { get; set;}
-        public string? Description { get; set;}
+        public string? CategoryName { get; set;}        
     }
     internal class Orders
     {
@@ -36,6 +35,7 @@ namespace WinFormsApp1.Class
     }
     internal class Suppliers1
     {
+        public string? SupplierID { get;set; }
         public string? CompanyName { get; set; }
         public string? ContactName { get; set; }
         public string? ContactTitle { get; set; }
@@ -45,6 +45,7 @@ namespace WinFormsApp1.Class
 
 
     }
+
 
 
 }
