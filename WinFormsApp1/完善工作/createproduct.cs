@@ -11,9 +11,9 @@ using Dapper;
 using System.Data.SqlClient;
 namespace WinFormsApp1
 {
-    public partial class Form9 : Form
+    public partial class createproduct : Form
     {
-        public Form9()
+        public createproduct()
         {
             InitializeComponent();
         }

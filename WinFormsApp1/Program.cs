@@ -1,3 +1,4 @@
+using WinFormsApp1.ªì¦¸½m²ß;
 using WinFormsApp1.ª«¥ó½m²ß;
 
 namespace WinFormsApp1
@@ -13,7 +14,7 @@ namespace WinFormsApp1
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form13());
+            Application.Run(new createorders());
         }
     }
 }

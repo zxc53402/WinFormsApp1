@@ -12,9 +12,9 @@ using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
-    public partial class Form13 : Form
+    public partial class createorders : Form
     {
-        public Form13()
+        public createorders()
         {
             InitializeComponent();
         }
