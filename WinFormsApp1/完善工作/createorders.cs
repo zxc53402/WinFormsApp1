@@ -77,7 +77,12 @@ namespace WinFormsApp1
                     currentRow.Cells[2].Value = results4.FirstOrDefault<dynamic>()?.UnitPrice ?? "";
                     currentRow.Cells[3].Value = results4.FirstOrDefault<dynamic>()?.UnitsInStock;
                 }
+                
             }
+            
+
+
+
         }
         //刪除鈕
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -93,81 +98,92 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
-            var cusID1 = cusID[comboBox1.SelectedIndex];
-            var shipID1 = shipID[comboBox2.SelectedIndex];
-            var epyID1 = epyID[comboBox3.SelectedIndex];
-            var OD = dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            var SD = dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            var RD = dateTimePicker2.Value.AddDays(15).ToString("yyyy-MM-dd HH:mm:ss.fff");
-            var getorder = "insert into Orders (CustomerID," +
-                "EmployeeID," +
-                "OrderDate," +
-                "RequiredDate," +
-                "ShippedDate," +
-                "ShipVia" +
-                ")values(" +
-                "'" + cusID1 + "'" +
-                ",'" + epyID1 + "'" +
-                ",'" + OD + "'" +
-                ",'" + RD + "'" +
-                ",'" + SD + "'" +
-                ",'" + shipID1 + "')";
-            int GOC = con.Execute(getorder);
-            var odID = "select distinct OrderID From Orders where OrderDate ='" + OD + "'";
-            var results5 = con.Query<dynamic>(odID).ToList();
-            var odID2 = results5[0].OrderID;
-            if (GOC > 0)
+            if (comboBox1.Text != "" && comboBox2.Text != "" && comboBox3.Text != "")
             {
-                foreach (DataGridViewRow row in dataGridView1.Rows)
-                {                    
-                    var pd2 = row.Cells["Column2"].Value?.ToString();
-                    var pd3 = "select distinct ProductID from Products where ProductName = @ProductName";
-                    var results6 = con.Query<dynamic>(pd3,new { ProductName = pd2 }).ToList();
-                    if(results6.Count == 0)
+                var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
+                var cusID1 = cusID[comboBox1.SelectedIndex];
+                var shipID1 = shipID[comboBox2.SelectedIndex];
+                var epyID1 = epyID[comboBox3.SelectedIndex];
+                var OD = dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                var SD = dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
+                var RD = dateTimePicker2.Value.AddDays(15).ToString("yyyy-MM-dd HH:mm:ss.fff");
+                var getorder = "insert into Orders (CustomerID," +
+                    "EmployeeID," +
+                    "OrderDate," +
+                    "RequiredDate," +
+                    "ShippedDate," +
+                    "ShipVia" +
+                    ")values(@CustomerID, @EmployeeID, @OrderDate, @RequiredDate, @ShippedDate, @ShipVia)";
+
+                int GOC = con.Execute(getorder, new
+                {
+                    CustomerID = cusID1,
+                    EmployeeID = epyID1,
+                    OrderDate = OD,
+                    RequiredDate = RD,
+                    ShippedDate = SD,
+                    ShipVia = shipID1
+                });
+                var odID = "select distinct OrderID From Orders where OrderDate ='" + OD + "'";
+                var results5 = con.Query<dynamic>(odID).ToList();
+                var odID2 = results5[0].OrderID;
+                if (GOC > 0)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
-                        MessageBox.Show("新增完成");
-                        dataGridView1.Rows.Clear();
-                        break;
-                    }
-                    var pdID2 = results6[0].ProductID;
-                    string? price2 = row.Cells["Column3"].Value?.ToString();
-                    string? Qt = row.Cells["Column4"].Value?.ToString();
-                    if (string.IsNullOrEmpty(pd2) || string.IsNullOrEmpty(price2) || string.IsNullOrEmpty(Qt))
-                    {
-                        continue;  // 若資料有空值，跳過此筆資料
-                    }
-                    string CNM = @"
+                        var pd2 = row.Cells["Column2"].Value?.ToString();
+                        var pd3 = "select distinct ProductID from Products where ProductName = @ProductName";
+                        var results6 = con.Query<dynamic>(pd3, new { ProductName = pd2 }).ToList();
+                        if (results6.Count == 0)
+                        {
+                            MessageBox.Show("新增完成");
+                            dataGridView1.Rows.Clear();
+                            break;
+                        }
+                        var pdID2 = results6[0].ProductID;
+                        string? price2 = row.Cells["Column3"].Value?.ToString();
+                        string? Qt = row.Cells["Column4"].Value?.ToString();
+                        if (string.IsNullOrEmpty(pd2) || string.IsNullOrEmpty(price2) || string.IsNullOrEmpty(Qt))
+                        {
+                            continue;  // 若資料有空值，跳過此筆資料
+                        }
+                        string CNM = @"
                                   INSERT INTO [Order Details] (OrderID, ProductID, UnitPrice, Quantity)
                                   VALUES (@OrderID, @ProductID, @UnitPrice, @Quantity)
                                   ";
-                    var CSS = @"
+                        var CSS = @"
                                UPDATE Products
                                SET UnitsInStock = UnitsInStock - @Quantity
                                WHERE ProductID = @ProductID
                                AND UnitsInStock >= @Quantity;
                                ";
 
-                    con.Execute(CNM, new
-                    {
-                        OrderID = odID2,     
-                        ProductID = pdID2,
-                        UnitPrice = price2,
-                        Quantity = Qt
-                    }
-                    );
-                    
-                    con.Execute(CSS, new
-                    {                        
-                        ProductID = pdID2,                       
-                        Quantity = Qt
-                    }
-                    );
+                        con.Execute(CNM, new
+                        {
+                            OrderID = odID2,
+                            ProductID = pdID2,
+                            UnitPrice = price2,
+                            Quantity = Qt
+                        }
+                        );
 
-                }            
+                        con.Execute(CSS, new
+                        {
+                            ProductID = pdID2,
+                            Quantity = Qt
+                        }
+                        );
+
+                    }
+
+                }
+
 
             }
-
+            else
+            {
+                MessageBox.Show("有必填欄位未填");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
