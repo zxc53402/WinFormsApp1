@@ -79,7 +79,23 @@ namespace WinFormsApp1
                 }
                 
             }
-            
+            foreach (DataGridViewRow row in dataGridView1.Rows)
+            {
+                if (row.Cells[3].Value != null && row.Cells[4].Value != null)
+                {
+                    decimal UnitsInStock, quantity;
+                    if (decimal.TryParse(row.Cells[3].Value.ToString(), out UnitsInStock) &&
+                        decimal.TryParse(row.Cells[4].Value.ToString(), out quantity))
+                    {
+                        if(UnitsInStock< quantity)
+                        {
+                            MessageBox.Show("庫存不足");
+                            row.Cells[4].Value = null;
+                        }
+                    }
+                }
+            }
+
 
 
 
@@ -91,7 +107,11 @@ namespace WinFormsApp1
             {
                 if (dataGridView1.Columns[e.ColumnIndex].Name == "Column1")
                 {
-                    dataGridView1.Rows.RemoveAt(e.RowIndex);
+                    DataGridViewRow row = dataGridView1.Rows[e.RowIndex];
+                    if (!row.IsNewRow)
+                    {
+                        dataGridView1.Rows.RemoveAt(e.RowIndex);
+                    }
                 }
             }
         }
