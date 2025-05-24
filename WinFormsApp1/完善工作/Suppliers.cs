@@ -26,7 +26,8 @@ namespace WinFormsApp1
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             var results = con.Query<Suppliers1>("select distinct CompanyName,ContactName,ContactTitle,Address,City,Phone from Suppliers").ToList();
             suppliers = results;
-            dataGridView1.DataSource = suppliers;
+            var dGVsp = suppliers.Select(s => new { s.CompanyName, s.ContactName,s.ContactTitle,s.Address,s.City,s.Phone }).ToList();
+            dataGridView1.DataSource = dGVsp;
         }
 
         private void button2_Click(object sender, EventArgs e)

@@ -18,6 +18,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+        
 
         private void btnExit_Click(object sender, EventArgs e)
         {
@@ -28,10 +29,20 @@ namespace WinFormsApp1
         {
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
 
-            
-            string sql = "insert into Customers (CustomerID,CompanyName) values('" + txtCustomerID.Text + "','" + txtCompanyName.Text +  "')";
+
+            string sql = "insert into Customers (CustomerID,CompanyName) values('" + txtCustomerID.Text + "','" + txtCompanyName.Text + "')";
 
             con.Execute(sql);
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            
+        }
+            
+    
+             
+    
+        
     }
 }
