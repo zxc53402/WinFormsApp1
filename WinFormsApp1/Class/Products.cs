@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,9 @@ namespace WinFormsApp1.Class
         public string? ProductID { get; set; }
         public string? ProductName { get; set; }
         public string? SupplierName { get; set; }
+        public string? SupplierID { get; set; }
+        public string? CategoryName { get; set; }
+        public string? CategoryID { get; set; }
         public string? QuantityPerUnit { get; set; }
         public string? UnitPrice { get; set; }
         public string? UnitsInStock { get; set; }
@@ -57,6 +61,20 @@ namespace WinFormsApp1.Class
         public string? Phone { get; set; }
      
     }
+    internal class Products2
+    {
+        public string? ProductID { get; set; }
+        public string? ProductName { get; set; }
+        public string? SupplierName { get; set; }
+        public string? QuantityPerUnit { get; set; }
+        public string? UnitPrice { get; set; }
+        public string? UnitsInStock { get; set; }
+        public string? ReorderLevel { get; set; }
+        public string? Discontinued { get; set; }
+        
+    }
+ 
+
 
 
 

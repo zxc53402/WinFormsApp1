@@ -41,7 +41,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(36, 263);
+            this.dataGridView1.Location = new System.Drawing.Point(36, 139);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 29;
@@ -77,7 +77,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(958, 60);
+            this.button4.Location = new System.Drawing.Point(652, 52);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(112, 45);
             this.button4.TabIndex = 6;
@@ -87,7 +87,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(959, 124);
+            this.button2.Location = new System.Drawing.Point(801, 54);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(111, 43);
             this.button2.TabIndex = 7;
@@ -97,7 +97,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(958, 187);
+            this.button3.Location = new System.Drawing.Point(958, 56);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 41);
             this.button3.TabIndex = 8;
@@ -109,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1110, 709);
+            this.ClientSize = new System.Drawing.Size(1103, 587);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button4);

@@ -56,7 +56,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(198, 397);
+            this.button1.Location = new System.Drawing.Point(556, 340);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(106, 52);
             this.button1.TabIndex = 0;
@@ -66,7 +66,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(582, 397);
+            this.button2.Location = new System.Drawing.Point(695, 340);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(106, 52);
             this.button2.TabIndex = 1;
@@ -250,11 +250,11 @@
             this.textBox11.Size = new System.Drawing.Size(302, 27);
             this.textBox11.TabIndex = 23;
             // 
-            // Form12
+            // createsuppliers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(863, 499);
+            this.ClientSize = new System.Drawing.Size(836, 413);
             this.Controls.Add(this.textBox11);
             this.Controls.Add(this.textBox10);
             this.Controls.Add(this.textBox9);
@@ -279,7 +279,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form12";
+            this.Name = "createsuppliers";
             this.Text = "新增供應商";
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.訂單資訊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.訂單ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,12 +37,16 @@
             this.產品資訊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.供應商ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.供應商資訊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
-            this.員工資訊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.員工資訊ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.顧客ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.顧客資訊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.員工資訊ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.員工資訊ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.button1 = new System.Windows.Forms.Button();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -55,7 +60,7 @@
             this.員工資訊ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(962, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(962, 27);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -65,20 +70,20 @@
             this.訂單ToolStripMenuItem,
             this.訂單明細ToolStripMenuItem});
             this.訂單資訊ToolStripMenuItem.Name = "訂單資訊ToolStripMenuItem";
-            this.訂單資訊ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.訂單資訊ToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
             this.訂單資訊ToolStripMenuItem.Text = "訂單";
             // 
             // 訂單ToolStripMenuItem
             // 
             this.訂單ToolStripMenuItem.Name = "訂單ToolStripMenuItem";
-            this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.訂單ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.訂單ToolStripMenuItem.Text = "訂單建立";
             this.訂單ToolStripMenuItem.Click += new System.EventHandler(this.訂單ToolStripMenuItem_Click);
             // 
             // 訂單明細ToolStripMenuItem
             // 
             this.訂單明細ToolStripMenuItem.Name = "訂單明細ToolStripMenuItem";
-            this.訂單明細ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.訂單明細ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.訂單明細ToolStripMenuItem.Text = "訂單資訊";
             this.訂單明細ToolStripMenuItem.Click += new System.EventHandler(this.訂單明細ToolStripMenuItem_Click);
             // 
@@ -87,13 +92,13 @@
             this.產品ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.產品資訊ToolStripMenuItem});
             this.產品ToolStripMenuItem.Name = "產品ToolStripMenuItem";
-            this.產品ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
+            this.產品ToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
             this.產品ToolStripMenuItem.Text = "產品";
             // 
             // 產品資訊ToolStripMenuItem
             // 
             this.產品資訊ToolStripMenuItem.Name = "產品資訊ToolStripMenuItem";
-            this.產品資訊ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.產品資訊ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
             this.產品資訊ToolStripMenuItem.Text = "產品資訊";
             this.產品資訊ToolStripMenuItem.Click += new System.EventHandler(this.產品資訊ToolStripMenuItem_Click);
             // 
@@ -102,15 +107,43 @@
             this.供應商ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.供應商資訊ToolStripMenuItem});
             this.供應商ToolStripMenuItem.Name = "供應商ToolStripMenuItem";
-            this.供應商ToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.供應商ToolStripMenuItem.Size = new System.Drawing.Size(68, 23);
             this.供應商ToolStripMenuItem.Text = "供應商";
             // 
             // 供應商資訊ToolStripMenuItem
             // 
             this.供應商資訊ToolStripMenuItem.Name = "供應商資訊ToolStripMenuItem";
-            this.供應商資訊ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.供應商資訊ToolStripMenuItem.Size = new System.Drawing.Size(167, 26);
             this.供應商資訊ToolStripMenuItem.Text = "供應商資訊";
             this.供應商資訊ToolStripMenuItem.Click += new System.EventHandler(this.供應商資訊ToolStripMenuItem_Click);
+            // 
+            // 顧客ToolStripMenuItem
+            // 
+            this.顧客ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.顧客資訊ToolStripMenuItem});
+            this.顧客ToolStripMenuItem.Name = "顧客ToolStripMenuItem";
+            this.顧客ToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
+            this.顧客ToolStripMenuItem.Text = "顧客";
+            // 
+            // 顧客資訊ToolStripMenuItem
+            // 
+            this.顧客資訊ToolStripMenuItem.Name = "顧客資訊ToolStripMenuItem";
+            this.顧客資訊ToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.顧客資訊ToolStripMenuItem.Text = "顧客資訊";
+            // 
+            // 員工資訊ToolStripMenuItem
+            // 
+            this.員工資訊ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.員工資訊ToolStripMenuItem1});
+            this.員工資訊ToolStripMenuItem.Name = "員工資訊ToolStripMenuItem";
+            this.員工資訊ToolStripMenuItem.Size = new System.Drawing.Size(53, 23);
+            this.員工資訊ToolStripMenuItem.Text = "員工";
+            // 
+            // 員工資訊ToolStripMenuItem1
+            // 
+            this.員工資訊ToolStripMenuItem1.Name = "員工資訊ToolStripMenuItem1";
+            this.員工資訊ToolStripMenuItem1.Size = new System.Drawing.Size(152, 26);
+            this.員工資訊ToolStripMenuItem1.Text = "員工資訊";
             // 
             // button1
             // 
@@ -121,34 +154,6 @@
             this.button1.Text = "結束";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // 員工資訊ToolStripMenuItem
-            // 
-            this.員工資訊ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.員工資訊ToolStripMenuItem1});
-            this.員工資訊ToolStripMenuItem.Name = "員工資訊ToolStripMenuItem";
-            this.員工資訊ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.員工資訊ToolStripMenuItem.Text = "員工";
-            // 
-            // 員工資訊ToolStripMenuItem1
-            // 
-            this.員工資訊ToolStripMenuItem1.Name = "員工資訊ToolStripMenuItem1";
-            this.員工資訊ToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
-            this.員工資訊ToolStripMenuItem1.Text = "員工資訊";
-            // 
-            // 顧客ToolStripMenuItem
-            // 
-            this.顧客ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.顧客資訊ToolStripMenuItem});
-            this.顧客ToolStripMenuItem.Name = "顧客ToolStripMenuItem";
-            this.顧客ToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.顧客ToolStripMenuItem.Text = "顧客";
-            // 
-            // 顧客資訊ToolStripMenuItem
-            // 
-            this.顧客資訊ToolStripMenuItem.Name = "顧客資訊ToolStripMenuItem";
-            this.顧客資訊ToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.顧客資訊ToolStripMenuItem.Text = "顧客資訊";
             // 
             // frmMain
             // 
@@ -162,6 +167,8 @@
             this.Text = "frmMain";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -182,5 +189,7 @@
         private ToolStripMenuItem 顧客資訊ToolStripMenuItem;
         private ToolStripMenuItem 員工資訊ToolStripMenuItem;
         private ToolStripMenuItem 員工資訊ToolStripMenuItem1;
+        private BindingSource bindingSource1;
+        private BindingSource bindingSource2;
     }
 }

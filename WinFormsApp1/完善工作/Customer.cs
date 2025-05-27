@@ -72,7 +72,7 @@ namespace WinFormsApp1
         {
             if (comboBox1.SelectedValue != "0")
             {
-                Form3 f3 = new Form3();
+                updatecustomer f3 = new updatecustomer();
                 f3.come = comboBox1.SelectedValue.ToString();
                 f3.Show();
             }

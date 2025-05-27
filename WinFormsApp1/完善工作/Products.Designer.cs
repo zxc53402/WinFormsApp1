@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -38,6 +37,8 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,27 +46,18 @@
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(33, 249);
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(33, 154);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.Size = new System.Drawing.Size(1042, 463);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "操作";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Text = "刪除";
-            this.Column1.ToolTipText = "刪除";
-            this.Column1.UseColumnTextForButtonValue = true;
-            this.Column1.Width = 75;
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(727, 62);
+            this.button1.Location = new System.Drawing.Point(822, 46);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 43);
             this.button1.TabIndex = 1;
@@ -92,7 +84,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(951, 62);
+            this.button3.Location = new System.Drawing.Point(963, 46);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(112, 43);
             this.button3.TabIndex = 5;
@@ -104,7 +96,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("標楷體", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(33, 212);
+            this.label2.Location = new System.Drawing.Point(33, 118);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(110, 23);
             this.label2.TabIndex = 6;
@@ -112,7 +104,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(951, 175);
+            this.button2.Location = new System.Drawing.Point(678, 46);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(112, 43);
             this.button2.TabIndex = 7;
@@ -137,11 +129,32 @@
             this.comboBox2.Size = new System.Drawing.Size(209, 27);
             this.comboBox2.TabIndex = 9;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "操作";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.Text = "刪除";
+            this.Column1.ToolTipText = "刪除";
+            this.Column1.UseColumnTextForButtonValue = true;
+            this.Column1.Width = 75;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "操作";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column2.Text = "修改";
+            this.Column2.UseColumnTextForButtonValue = true;
+            this.Column2.Width = 75;
+            // 
             // ProductForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1097, 737);
+            this.ClientSize = new System.Drawing.Size(1111, 646);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
@@ -168,9 +181,10 @@
         private ComboBox comboBox1;
         private Button button3;
         private Label label2;
-        private DataGridViewButtonColumn Column1;
         private Button button2;
         private Label label3;
         private ComboBox comboBox2;
+        private DataGridViewButtonColumn Column1;
+        private DataGridViewButtonColumn Column2;
     }
 }

@@ -13,11 +13,11 @@ using WinFormsApp1.Class;
 
 namespace WinFormsApp1
 {
-    public partial class Form3 : System.Windows.Forms.Form
+    public partial class updatecustomer : System.Windows.Forms.Form
     {
         public string come { get; set; }
         List<Customers> cus;
-        public Form3()
+        public updatecustomer()
         {
             InitializeComponent();
         }
