@@ -55,5 +55,13 @@ namespace WinFormsApp1
             this.Close();
            
         }
+
+        private void 顧客資訊ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Customer frm = new Customer();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();
+        }
     }
 }

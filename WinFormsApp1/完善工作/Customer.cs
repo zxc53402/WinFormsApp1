@@ -16,6 +16,8 @@ namespace WinFormsApp1
     public partial class Customer : Form
     {
         List<Customers> customera;
+        
+
         public Customer()
         {
             InitializeComponent();
@@ -25,8 +27,12 @@ namespace WinFormsApp1
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             var results = con.Query<Customers>("select * from Customers").ToList();
             customera = results;
-            var dGVct = customera.Select(x => new { x.CompanyName, x.ContactName, x.ContactTitle, x.Address, x.City, x.Country, x.Phone }).ToList();
-            dataGridView1.DataSource = dGVct;
+
+            var data = customera.Where(p => p.CompanyName != "-- 請選擇 --").ToList();
+            dataGridView1.DataSource = data;
+            dataGridView1.Columns["CustomerID"].Visible = false;
+            
+
             customera.Insert(0, new Customers { CustomerID = "0", CompanyName = "-- 請選擇 --" });
             comboBox1.DataSource = customera;
             comboBox1.DisplayMember = "CompanyName";
@@ -40,16 +46,17 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<Customers> customera=new List<Customers>();
+            List<Customers> customera = new List<Customers>();
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             var cbc = comboBox1.SelectedValue;
             if (cbc != "0")
             {
                 var sql = "select * from Customers where CustomerID = @customerID";
                 var results2 = con.Query<Customers>(sql, new { customerID = cbc }).ToList();
-                customera=results2;
-                var dGVct2 = customera.Select(x => new { x.CompanyName, x.ContactName, x.ContactTitle, x.Address, x.City, x.Country, x.Phone }).ToList();
-                dataGridView1.DataSource= dGVct2;
+                //customera=results2;
+                //var dGVct2 = customera.Select(x => new { x.CompanyName, x.ContactName, x.ContactTitle, x.Address, x.City, x.Country, x.Phone }).ToList();
+                dataGridView1.DataSource = results2;
+                dataGridView1.Columns["CustomerID"].Visible = false;
             }
             else
             {
@@ -59,7 +66,7 @@ namespace WinFormsApp1
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
+            createcustomer f2 = new createcustomer();
             f2.Show();
         }
 
@@ -67,19 +74,17 @@ namespace WinFormsApp1
         {
             this.Close();
         }
-
-        private void button2_Click(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (comboBox1.SelectedValue != "0")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Column1" && e.RowIndex >= 0)                
             {
-                updatecustomer f3 = new updatecustomer();
-                f3.come = comboBox1.SelectedValue.ToString();
-                f3.Show();
+                var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
+                var cus = (Customers)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                updatecustomer fr = new updatecustomer();
+                fr.come = cus.CustomerID;
+                fr.Show();
             }
-            else
-            {
-                MessageBox.Show("請選擇公司名稱");
-            }
+            
         }
     }
 }

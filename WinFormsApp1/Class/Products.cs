@@ -61,6 +61,7 @@ namespace WinFormsApp1.Class
         public string? Phone { get; set; }
      
     }
+    
     internal class Products2
     {
         public string? ProductID { get; set; }
@@ -73,7 +74,21 @@ namespace WinFormsApp1.Class
         public string? Discontinued { get; set; }
         
     }
- 
+    internal class Employees
+    {
+        public string? EmployeeID { get; set;}
+        public string? LastName { get; set; }
+        public string? FirstName { get; set; }
+        public string? Title { get; set; }
+        public string? TitleOfCourtesy { get; set; }
+        public string? BirthDate { get; set; }
+        public string? HireDate { get; set; }
+        public string? Address { get; set; }
+        public string? City { get; set; }
+
+    }
+     
+
 
 
 

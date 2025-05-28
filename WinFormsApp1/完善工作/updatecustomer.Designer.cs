@@ -35,7 +35,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -45,6 +44,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -110,13 +110,6 @@
             this.label2.Size = new System.Drawing.Size(104, 19);
             this.label2.TabIndex = 11;
             this.label2.Text = "ContactName";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(566, 121);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(172, 27);
-            this.textBox2.TabIndex = 14;
             // 
             // label4
             // 
@@ -191,11 +184,19 @@
             this.label8.TabIndex = 21;
             this.label8.Text = "Phone";
             // 
+            // textBox7
+            // 
+            this.textBox7.Location = new System.Drawing.Point(566, 121);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(172, 27);
+            this.textBox7.TabIndex = 24;
+            // 
             // updatecustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(771, 487);
+            this.Controls.Add(this.textBox7);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox5);
@@ -204,7 +205,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
@@ -230,7 +230,6 @@
         private Label label3;
         private TextBox textBox1;
         private Label label2;
-        private TextBox textBox2;
         private Label label4;
         private TextBox textBox3;
         private Label label5;
@@ -240,5 +239,6 @@
         private Label label7;
         private TextBox textBox6;
         private Label label8;
+        private TextBox textBox7;
     }
 }

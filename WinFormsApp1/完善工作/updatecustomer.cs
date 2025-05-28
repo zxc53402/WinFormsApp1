@@ -30,7 +30,7 @@ namespace WinFormsApp1
             cus = results;
             txtCompanyName.Text =cus.FirstOrDefault()?.CompanyName ;
             textBox1.Text = cus.FirstOrDefault()?.ContactName;
-            textBox2.Text = cus.FirstOrDefault()?.ContactTitle;
+            textBox7.Text = cus.FirstOrDefault()?.ContactTitle;
             textBox3.Text = cus.FirstOrDefault()?.Address;
             textBox4.Text = cus.FirstOrDefault()?.City;
             textBox5.Text = cus.FirstOrDefault()?.Country;
@@ -50,7 +50,7 @@ namespace WinFormsApp1
             {
                 Com = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : txtCompanyName.Text,
                 Con = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : textBox1.Text,
-                Cont = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : textBox2.Text,
+                Cont = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : textBox7.Text,
                 Ad = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : textBox3.Text,
                 City = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : textBox4.Text,
                 Cou = string.IsNullOrWhiteSpace(txtCompanyName.Text) ? null : textBox5.Text,
