@@ -16,8 +16,7 @@ namespace WinFormsApp1.初次練習
 {
     public partial class ProductForm : Form
     {
-        List<Category> category;
-        List<Products> products;
+        List<Category> category;        
         List<Products2> products2;
         List<Suppliers1> suppliers;
         public ProductForm()
@@ -124,23 +123,21 @@ namespace WinFormsApp1.初次練習
                 var result3 = MessageBox.Show("是否確定刪除這一列？", "確認刪除", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result3 == DialogResult.Yes)
                 {
-                    if (result3 == DialogResult.Yes)
-                    {
-                        // 取得目前這列的資料對象
-                        var pd1 = (Products2)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                    // 取得目前這列的資料對象
+                    var pd1 = (Products2)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                    //先刪資料庫
+                    var results3 = con.Execute("delete from Products where ProductID = @product",
+                            new { product = pd1.ProductID });
 
-                        // 從 list 中移除
-                        products2.Remove(pd1);                        
-                        if(products2.Count > 0)
-                        {
-                            var results3 = con.Execute("delete from Products where ProductID = @product",
-                                new { product = pd1.ProductID });
-                            MessageBox.Show("成功刪除 " + results3 + "項資料");
-                        }
-                       
-                        dataGridView1.DataSource = null;
-                        dataGridView1.DataSource = products;
+                    // 從 list 中移除
+                    products2.Remove(pd1);
+                    if (products2.Count > 0)
+                    {
+                        MessageBox.Show("成功刪除 " + results3 + "項資料");
                     }
+
+                    dataGridView1.DataSource = null;
+                    dataGridView1.DataSource = products2;
                 }
             }
             if(dataGridView1.Columns[e.ColumnIndex].Name == "Column2" && e.RowIndex >= 0)
