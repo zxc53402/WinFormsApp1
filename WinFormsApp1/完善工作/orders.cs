@@ -29,8 +29,8 @@ namespace WinFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
-            var dates = dateTimePicker1.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
-            var dateo = dateTimePicker2.Value.ToString("yyyy-MM-dd HH:mm:ss.fff");
+            var dates = dateTimePicker1.Value.ToString("yyyy-MM-dd 00:00:00.000");
+            var dateo = dateTimePicker2.Value.ToString("yyyy-MM-dd 23:59:59.999");
             var results = con.Query<Orders>("SELECT " +
                 "a.OrderID" +
                 ", b.CompanyName" +
@@ -44,6 +44,11 @@ namespace WinFormsApp1
             order1 = results;
             dataGridView1.DataSource = order1;          
 
+        }
+
+        private void orders_Load(object sender, EventArgs e)
+        {
+            button1.PerformClick();
         }
     }
 }

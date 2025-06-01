@@ -28,17 +28,19 @@ namespace WinFormsApp1.初次練習
         {
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");            
             var results = con.Query<Category>("select CategoryID,CategoryName from Categories").ToList();
-            var results4 = con.Query<Suppliers1>("select distinct SupplierID,CompanyName from Suppliers").ToList();
+            //var results4 = con.Query<Suppliers1>("select distinct SupplierID,CompanyName from Suppliers").ToList();
             category = results;
-            suppliers = results4;
+            
             category.Insert(0, new Category { CategoryID = "0", CategoryName = "" });
-            suppliers.Insert(0, new Suppliers1 { SupplierID = "0", CompanyName = "" });
-            comboBox1.DataSource = category.ToList(); 
-            comboBox1.DisplayMember = "CategoryName"; 
+
+            comboBox1.DisplayMember = "CategoryName";
             comboBox1.ValueMember = "CategoryID";
-            comboBox2.DataSource = suppliers.ToList();
-            comboBox2.DisplayMember = "CompanyName";
-            comboBox2.ValueMember = "SupplierID";
+            comboBox1.DataSource = category; 
+            GetSupplier("");
+
+            //comboBox2.DataSource = suppliers.ToList();
+            //comboBox2.DisplayMember = "CompanyName";
+            //comboBox2.ValueMember = "SupplierID";
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -155,6 +157,33 @@ namespace WinFormsApp1.初次練習
         {
             createproduct frm = new createproduct();
             frm.ShowDialog();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //var selectedItem = (Category)comboBox1.SelectedItem;
+            //GetSupplier(selectedItem.CategoryID??"");
+
+            var selectedItem = comboBox1.SelectedValue?.ToString()??"";
+            GetSupplier(selectedItem);
+        }
+        private void GetSupplier(string fsCategory ="")
+        {          
+
+            var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
+            var sql = "select distinct a.SupplierID,a.CompanyName " +
+                " from Suppliers a " +
+                " join Products b on a.SupplierID = b.SupplierID " +
+                " join Categories c on b.CategoryID = c.CategoryID ";
+                
+            if(fsCategory != "") sql = sql + " where c.CategoryID = @categoryID"; 
+            var results = con.Query<Suppliers1>(sql, new {
+                categoryID = (fsCategory != "" ? Convert.ToInt16(fsCategory) : 0)
+            }).ToList();
+            results.Insert(0, new Suppliers1 { SupplierID = "0", CompanyName = "" });
+            comboBox2.DisplayMember = "CompanyName";
+            comboBox2.ValueMember = "SupplierID";
+            comboBox2.DataSource = results;
         }
     }
 }

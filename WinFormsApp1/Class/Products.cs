@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
+using System.Data.SqlClient;
+using WinFormsApp1.Class;
 
 namespace WinFormsApp1.Class
 {
@@ -87,7 +90,20 @@ namespace WinFormsApp1.Class
         public string? City { get; set; }
 
     }
-     
+    internal class TotaltotalQuantity
+    {
+        public string? ProductName { get; set; }
+        public string? Quantity { get; set; }
+        
+    }
+    internal class TotalSales
+    {
+        public string? CompanyName { get; set; }
+        public string? Ordervolume { get; set; }
+        public string? totalSales { get; set; }
+
+    }
+
 
 
 
