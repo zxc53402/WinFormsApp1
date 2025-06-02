@@ -132,27 +132,28 @@ namespace WinFormsApp1
             {
                 using (var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;"))
                 {
-                    var sql = "select " +
-                    "c.ProductName," +
-                    "SUM(Quantity) as Quantity " +
-                    "from Orders a " +
-                    "left join [Order Details] b on a.OrderID = b.OrderID " +
-                    "left join Products c on b.ProductID = c.ProductID ";
-                    var sql2 = "select " +
-                        "d.CompanyName," +
-                        "COUNT(*) AS Ordervolume," +
-                        "SUM(ISNULL(b.Quantity, 0) * ISNULL(b.UnitPrice, 0)) AS TotalSales " +
-                        "from Orders a " +
-                        "left join [Order Details] b on a.OrderID=b.OrderID " +
-                        "left join Products c on b.ProductID = c.ProductID " +
-                        "left join Customers d on a.CustomerID = d.CustomerID ";
+                    var sql = "select top(10) " +
+                    " c.ProductName," +
+                    " SUM(Quantity) as Quantity " +
+                    " from Orders a " +
+                    " left join [Order Details] b on a.OrderID = b.OrderID " +
+                    " left join Products c on b.ProductID = c.ProductID ";
+                    var sql2 = "select top (10) " +
+                        " d.CompanyName," +
+                        " COUNT(*) AS Ordervolume," +
+                        " SUM(ISNULL(b.Quantity, 0) * ISNULL(b.UnitPrice, 0)) AS TotalSales " +
+                        " from Orders a " +
+                        " left join [Order Details] b on a.OrderID=b.OrderID " +
+                        " left join Products c on b.ProductID = c.ProductID " +
+                        " left join Customers d on a.CustomerID = d.CustomerID ";
                     int month = int.Parse(selected.Replace("月", ""));
                     int year = int.Parse(selected2.Replace("年", ""));
-                    var sqlc = "WHERE YEAR(OrderDate) = @year AND MONTH(OrderDate) = @month ";                      
-                    var GB1 = "AND B.ProductID is not null "+
-                        "GROUP BY c.ProductName ";
-                    var GB2 = "GROUP BY d.CompanyName "
-                        /*"HAVING SUM(b.Quantity * b.UnitPrice) > 0; "*/;
+                    var sqlc = " WHERE YEAR(OrderDate) = @year AND MONTH(OrderDate) = @month ";                      
+                    var GB1 = " AND B.ProductID is not null "+
+                        " GROUP BY c.ProductName "+
+                        " ORDER BY Quantity DESC ";
+                    var GB2 = " GROUP BY d.CompanyName "+
+                        " ORDER BY TotalSales DESC ";
 
                     if (selected != null && selected2 != null)
                     {
@@ -174,6 +175,14 @@ namespace WinFormsApp1
 
                 }
             }
+        }
+
+        private void 員工資訊ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Employee frm = new Employee();
+            frm.FormClosed += (s, args) => this.Show();
+            frm.Show();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace WinFormsApp1
         public login()
         {
             InitializeComponent();
+            this.AcceptButton = button1;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("密碼錯誤");
                 textBox1.Clear();
-            }
+            }           
 
         }
 
