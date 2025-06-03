@@ -103,6 +103,14 @@ namespace WinFormsApp1.Class
         public string? totalSales { get; set; }
 
     }
+    internal class Odetail
+    {
+        public string? ProductName { get; set; }
+        public string? UnitPrice { get; set; }
+        public string? Quantity { get; set; }
+        public string? Discount { get; set; }
+
+    }
 
 
 

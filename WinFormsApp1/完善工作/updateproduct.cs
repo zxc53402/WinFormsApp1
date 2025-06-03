@@ -65,6 +65,11 @@ namespace WinFormsApp1
         }
             private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("產品名稱不得為空");
+                return;
+            }
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             var sql3 = "Update Products set " +
                 "ProductName=@productName, " +

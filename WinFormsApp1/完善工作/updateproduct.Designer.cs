@@ -162,6 +162,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "updateproduct";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "updateproduct";
             this.Load += new System.EventHandler(this.updateproduct_Load);
             this.ResumeLayout(false);

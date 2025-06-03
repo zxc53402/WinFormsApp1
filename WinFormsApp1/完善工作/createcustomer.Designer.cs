@@ -214,6 +214,7 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnSave);
             this.Name = "createcustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);

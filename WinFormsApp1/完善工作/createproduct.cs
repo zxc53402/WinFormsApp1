@@ -41,6 +41,11 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("請輸入產品名稱!!");
+                return;
+            }
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             var Name = textBox1.Text;
             var SP = List2[comboBox2.SelectedIndex];

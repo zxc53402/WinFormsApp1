@@ -11,6 +11,7 @@ using Dapper;
 using System.Data.SqlClient;
 using WinFormsApp1.Class;
 using WinFormsApp1.初次練習;
+using TopPower.DataGridViewSortableBinding;
 
 namespace WinFormsApp1
 {
@@ -163,9 +164,11 @@ namespace WinFormsApp1
                     var result = con.Query<TotaltotalQuantity>(sql, new { year = year, month = month }).ToList();
                     dataGridView1.DataSource = result;
                     dataGridView1.RowHeadersVisible = false;
+                    dataGridView1.DataSource = new SortableBindingList<TotaltotalQuantity>(result);
                     var result2 = con.Query<TotalSales>(sql2, new { year = year, month = month }).ToList();
                     dataGridView2.DataSource = result2;
                     dataGridView2.RowHeadersVisible = false;
+                    dataGridView2.DataSource = new SortableBindingList<TotalSales>(result2);
 
                     //var sqlnow2 = "where OrderDate >= DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1) " +
                     //    "AND OrderDate < DATEADD(MONTH, 1, DATEFROMPARTS(YEAR(GETDATE()), MONTH(GETDATE()), 1)) " +
@@ -184,5 +187,6 @@ namespace WinFormsApp1
             frm.FormClosed += (s, args) => this.Show();
             frm.Show();
         }
+
     }
 }

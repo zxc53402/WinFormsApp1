@@ -50,5 +50,17 @@ namespace WinFormsApp1
         {
             button1.PerformClick();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Column1" && e.RowIndex >= 0)
+            {
+                var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
+                var pd1 = (Orders)dataGridView1.Rows[e.RowIndex].DataBoundItem;
+                orderdetail f2 = new orderdetail();
+                f2.oDID = pd1.OrderID;
+                f2.Show();
+            }
+        }
     }
 }

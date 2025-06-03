@@ -280,6 +280,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Name = "createsuppliers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增供應商";
             this.ResumeLayout(false);
             this.PerformLayout();

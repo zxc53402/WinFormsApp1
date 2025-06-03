@@ -36,7 +36,7 @@ namespace WinFormsApp1
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             if (string.IsNullOrWhiteSpace(txtLastName.Text)|| string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                MessageBox.Show("姓名不得為空");                
+                MessageBox.Show("請輸入姓名!!");                
                 return;
             }
             string rb = "";

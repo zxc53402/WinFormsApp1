@@ -36,6 +36,11 @@ namespace WinFormsApp1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtCompanyName.Text)|| string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("請輸入公司名稱及負責人!!!");
+                return;
+            }
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");            
             
             bool IDr(string newId)

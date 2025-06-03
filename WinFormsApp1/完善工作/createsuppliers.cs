@@ -21,6 +21,11 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBox1.Text) || string.IsNullOrWhiteSpace(textBox2.Text))
+            {
+                MessageBox.Show("請輸入公司名稱及負責人!!!");
+                return;
+            }
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
            
             var CN = textBox1.Text;

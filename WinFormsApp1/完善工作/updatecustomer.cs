@@ -44,6 +44,11 @@ namespace WinFormsApp1
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtCompanyName.Text) || string.IsNullOrWhiteSpace(textBox1.Text))
+            {
+                MessageBox.Show("公司名稱及負責人不得為空");
+                return;
+            }
             var con = new SqlConnection("Server=localhost;Database=master;Trusted_Connection=True;");
             var sql = "Update Customers set CompanyName=@Com , ContactName=@Con , ContactTitle=@Cont , Address=@Ad , City=@City , Country=@Cou , Phone=@Ph where CustomerID=@Cus";
             var results1 = con.Query<Customers>(sql, new

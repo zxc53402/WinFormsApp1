@@ -239,6 +239,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "updateemployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "updateemployee";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.updateemployee_FormClosed);
             this.Load += new System.EventHandler(this.updateemployee_Load);
