@@ -28,7 +28,7 @@ namespace WinFormsApp1
             var sql = "select *from Customers where CustomerID = @customersID";
             var results = con.Query<Customers>(sql, new {customersID = come}).ToList();
             cus = results;
-            txtCompanyName.Text =cus.FirstOrDefault()?.CompanyName ;
+            txtCompanyName.Text = cus.FirstOrDefault()?.CompanyName ;
             textBox1.Text = cus.FirstOrDefault()?.ContactName;
             textBox7.Text = cus.FirstOrDefault()?.ContactTitle;
             textBox3.Text = cus.FirstOrDefault()?.Address;

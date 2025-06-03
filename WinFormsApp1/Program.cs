@@ -13,17 +13,16 @@ namespace WinFormsApp1
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new ProductForm());
+            //ApplicationConfiguration.Initialize();
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
 
-            //login frm = new login();
-            //if (frm.ShowDialog() == DialogResult.OK)
-            //{
-            //    Application.Run(new frmMain());
-            //}
+            login frm = new login();
+            if (frm.ShowDialog() == DialogResult.OK)
+            {
+                Application.Run(new frmMain());
+            }
         }
     }
 }
